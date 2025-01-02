@@ -6,27 +6,42 @@ MovieBot is an interactive chatbot designed to help you explore the world of cin
 
 - **Movie Information**  
    - Ask about movie summaries, release dates, genres, directors, and more.  
-   - Example: "Tell me about the movie *Inception*."  
+   - Eng Example: "Tell me about the movie *Inception*."  
+   - Vi Example: "Thông tin về phim *Inception*."
 
 - **Actor Details**  
-   - Search for actor information, including their career highlights, popular movies, and awards.  
-   - Example: "Which movies has *Leonardo DiCaprio* starred in?"  
+   - Search for information about actors, including their names and the roles they have played in movies.
+   - Eng Example: "Which movies has *Leonardo DiCaprio* starred in?"
+   - Vi Example: "Những bộ phim có diễn viên *Leonardo DiCaprio* đóng?"
 
 - **Character Q&A**  
    - Learn about characters in movies, their roles, and backstories.  
-   - Example: "Who is *Tony Stark* in Marvel movies?"  
+   - Eng Example: "Who is *Tony Stark* in Marvel movies?"
+   - Vi Example: "Ai là *Tony Stark* trong phim Marvel movies?"
 
 - **Personalized Movie Recommendations**  
-   - Get movie suggestions based on genres, favorite actors, or top-rated films.  
-   - Example: "Recommend a good action movie for me."  
+   - Receive recommendations on what movie to watch next based on keywords and the user's favorite films.
+   - Eng Example: "I’ve watched Inception, what should I watch next?"
+   - Vi Example: "Tôi đã xem inception thì nên xem gì tiếp theo?"
+
+- **Automatically correct misspelled**
+    - Automatically correct misspelled movie titles, action name, keyword,... entered by users based on an existing list of available movies.
+    - Eng Example: "when did the *iron main 2* release" -> Fixed -> "when did the *iron man 2* release"
+    - Vi Example: "Phim *iron main 2* ra mắt vào thời gian nào?" -> "Phim *iron man 2* ra mắt vào thời gian nào?
+  
+- **Website**
+    - [Link demo](https://blackk.streamlit.app/)
+   ![home_page](assets/home_page.png)
 
 ## 🛠️ Technologies  
 
-- **Programming Language**: Python  
-- **Framework**: Streamlit for the user interface  
+- **Programming Language**: Python  , RAG (Retrieval-Augumented Generation)
+- **Deploy**: Streamlit Community Cloud
 - ***Technology**: 
   - RAG for your private data
   - Knowledge Graph will improve accuracy
+  - Use the Neo4j graph database and Cypher query
+  - Integrate a recommendation system.
 - **Data Sources**:  
    - TMDb API (The Movie Database) for movie information  
    - About 5000 movies
