@@ -1,0 +1,85 @@
+Task: Generate an accurate Cypher query to retrieve information from a graph database.
+
+Instructions:
+
+1. Carefully analyze the question to identify relevant nodes, relationships, and properties from the schema.
+2. Use only the relationship types, node labels, and properties explicitly defined in the provided schema. Do not introduce undefined elements, assumptions, or arbitrary labels.
+3. The schema is as follows:
+{schema}
+4. Return only the valid Cypher query as the output. Avoid explanations, comments, or additional text.
+5. Ensure the query is well-structured, syntactically correct, and directly addresses the question using the schema provided.
+
+Examples:
+# Thể loại của phim Avatar là gì?
+MATCH (movie)-[:BELONGS_TO]-(genres)
+    WHERE movie.title = 'Avatar'
+RETURN genres.name
+
+# Từ khóa của phim Avatar là gì?
+MATCH (movie)-[:HAS_KEYWORD]-(keyword)
+    WHERE movie.title = 'Avatar'
+RETURN keyword.name
+
+# Bộ phim Avatar được ghi hình tại quốc gia nào?
+MATCH (movie)-[:PRODUCED_IN]-(country)
+    WHERE movie.title = 'Avatar'
+RETURN country.name
+
+# Bộ phim Avatar do hãng phim nào sản xuất?
+MATCH (movie)-[:PRODUCED_BY]-(companies)
+    WHERE movie.title = 'Avatar'
+RETURN companies.name
+
+# Bộ phim Avatar ra mắt vào thời gian nào?
+MATCH (movie)
+    WHERE movie.title = 'Avatar'
+RETURN movie.release_date
+
+# Review về bộ phim Avatar?
+MATCH (movie)
+    WHERE movie.title = 'Avatar'
+RETURN movie.overview
+
+# Nói cho tôi điểm đánh giá vote trung bình của phim Avatar?
+MATCH (movie)
+    WHERE movie.title = 'Avatar'
+RETURN movie.vote_average
+
+# Phim Avatar có bao nhiêu diễn viên đóng?
+MATCH (movie)-[:ACTED_IN]-(actor)
+    WHERE movie.title = 'Avatar'
+RETURN count(actor)
+
+# Các diễn viên chính của phim Avatar là ai?
+MATCH (movie)-[role:ACTED_IN]-(actor)
+    WHERE movie.title = 'Avatar' and role.order <= 3
+RETURN actor.name
+
+# Các diễn viên phụ của phim Avatar là ai?
+MATCH (movie)-[role:ACTED_IN]-(actor)
+    WHERE movie.title = 'Avatar' and role.order > 3
+RETURN actor.name
+
+# Sam Worthington đóng vai nhân vật gì trong phim Avatar?
+MATCH (movie)-[role:ACTED_IN]-(actor)
+    WHERE movie.title = 'Avatar' and actor.name='Sam Worthington'
+RETURN role.character
+
+# Tôi đã xem Avatar rồi thì nên xem gì tiếp theo?
+MATCH (n:Movie)-[:HAS_KEYWORD]->(k:Keyword)
+WHERE n.title = "Avatar"
+WITH n, collect(k) as sourceKeywords
+MATCH (other:Movie)-[:HAS_KEYWORD]->(otherKeyword:Keyword)
+WHERE other <> n
+WITH other, sourceKeywords, 
+     collect(otherKeyword) as otherKeywords,
+     size([x IN collect(otherKeyword) WHERE x IN sourceKeywords]) as commonKeywords
+
+RETURN other.title as Movie,
+       (1.0 * commonKeywords / size(sourceKeywords)) as SimilarityScore,
+       other.overview as Review
+ORDER BY commonKeywords DESC
+LIMIT 1
+
+The question is:
+{question}

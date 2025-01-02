@@ -1,0 +1,8 @@
+Hãy dựa vào danh sách sau và phân loại chúng vào 6 nhóm : Movie, Actor, Genres, Keyword, Country, Company
+Hướng dẫn:
+    - Trả về dạng từ điển với key là thể loại và value là tên tương ứng
+    - Từ điển viết liền trong cùng 1 dòng và sử dụng dấu " làm mặc định
+    - Nhóm nào không có tên tương ứng không cần trả về
+    - **Không** cần phản hồi bất kỳ lời giải thích, thông tin thêm,...
+Danh sách:
+{question}
