@@ -1,0 +1,10 @@
+/.env
+/.venv
+/Connect.ipynb
+/Crawl.ipynb
+/data
+/EDA.ipynb
+/PromptChat.ipynb
+/LangChainX.ipynb
+__pycache__
+/metadata/*.csv
