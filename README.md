@@ -37,7 +37,7 @@ MovieBot is an interactive chatbot designed to help you explore the world of cin
 
 - **Programming Language**: Python  , RAG (Retrieval-Augumented Generation)
 - **Deploy**: Streamlit Community Cloud
-- ***Technology**: 
+- **Technology**: 
   - RAG for your private data
   - Knowledge Graph will improve accuracy
   - Use the Neo4j graph database and Cypher query
@@ -46,6 +46,8 @@ MovieBot is an interactive chatbot designed to help you explore the world of cin
    - TMDb API (The Movie Database) for movie information  
    - About 5000 movies
    - OpenAI GPT for natural language processing
+- **Database schema**:
+   ![Schema](assets/schema.png)
 
 ## 🔧 Installation  
 
